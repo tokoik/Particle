@@ -1,0 +1,353 @@
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.sjis) (TeX Live 2017/W32TeX) (preloaded format=platex 2017.12.28)  5 FEB 2018 10:47
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./thesis_miyusakaguchi.tex
+(./thesis_miyusakaguchi.tex
+pLaTeX2e <2017/10/28>+3 (based on LaTeX2e <2017-04-15>)
+Babel <3.15> and hyphenation patterns for 84 language(s) loaded.
+(c:/texlive/2017/texmf-dist/tex/platex/base/jreport.cls
+Document Class: jreport 2017/09/19 v1.7g Standard pLaTeX class
+\c@@paper=\count82
+(c:/texlive/2017/texmf-dist/tex/platex/base/jsize11.clo
+File: jsize11.clo 2017/09/19 v1.7g Standard pLaTeX file (size option)
+)
+\c@part=\count83
+\c@chapter=\count84
+\c@section=\count85
+\c@subsection=\count86
+\c@subsubsection=\count87
+\c@paragraph=\count88
+\c@subparagraph=\count89
+\c@figure=\count90
+\c@table=\count91
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\symmincho=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 702.
+\toclineskip=\dimen118
+\@lnumwidth=\dimen119
+\bibindent=\dimen120
+\heisei=\count92
+) (./wuse_thesis.sty
+和歌山大学システム工学部卒業論文用スタイルファイル
+(c:/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+))
+(c:/texlive/2017/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen121
+))
+(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen122
+)
+(c:/texlive/2017/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count93
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count94
+\leftroot@=\count95
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count96
+\DOTSCASE@=\count97
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box42
+\strutbox@=\box43
+\big@size=\dimen123
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count98
+\c@MaxMatrixCols=\count99
+\dotsspace@=\muskip10
+\c@parentequation=\count100
+\dspbrk@lvl=\count101
+\tag@help=\toks16
+\row@=\count102
+\column@=\count103
+\maxfields@=\count104
+\andhelp@=\toks17
+\eqnshift@=\dimen124
+\alignsep@=\dimen125
+\tagshift@=\dimen126
+\tagwidth@=\dimen127
+\totwidth@=\dimen128
+\lineht@=\dimen129
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(c:/texlive/2017/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(c:/texlive/2017/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(c:/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+(c:/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(c:/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvipdfmx.def on input line 99.
+
+(c:/texlive/2017/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
+))
+\Gin@req@height=\dimen130
+\Gin@req@width=\dimen131
+)
+(./thesis_miyusakaguchi.aux
+
+LaTeX Warning: Label `fig:cloudanime' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+
+LaTeX Warning: Label `exp:sample' multiply defined.
+
+)
+\openout1 = `thesis_miyusakaguchi.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 49.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 49.
+ [1
+
+]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 54.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 54.
+ [1] (./thesis_miyusakaguchi.toc
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1.
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+
+(c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+
+(c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
+\tf@toc=\write3
+\openout3 = `thesis_miyusakaguchi.toc'.
+
+ [2] [1]
+第 1 章
+
+LaTeX Warning: Reference `fig:cloudreal' on page 2 undefined on input line 83.
+
+File: cgliquid1.jpg Graphic file (type bmp)
+<cgliquid1.jpg>
+File: cgliquid3.jpg Graphic file (type bmp)
+<cgliquid3.jpg>
+
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 89--103
+[][]$[]$[] []$[]$[] 
+ []
+
+File: cgcloud1.png Graphic file (type bmp)
+<cgcloud1.png>
+File: transformcloud1.jpg Graphic file (type bmp)
+<transformcloud1.jpg>
+File: howtobecloud1.PNG Graphic file (type bmp)
+<howtobecloud1.PNG>
+File: howtobecloud2.PNG Graphic file (type bmp)
+<howtobecloud2.PNG>
+
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 122--136
+[][]$[]$[] []$[]$[] 
+ []
+
+File: howtobecloud3.PNG Graphic file (type bmp)
+<howtobecloud3.PNG>
+File: howtobecloud4.PNG Graphic file (type bmp)
+<howtobecloud4.PNG>
+
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 138--152
+[][]$[]$[] []$[]$[] 
+ []
+
+[2
+
+] [3] [4]
+第 2 章
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 161.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 161.
+File: cloud.jpg Graphic file (type bmp)
+<cloud.jpg>
+[5
+
+]
+
+LaTeX Warning: Reference `[' on page 6 undefined on input line 190.
+
+File: alphablending.PNG Graphic file (type bmp)
+<alphablending.PNG>
+[6]
+Overfull \hbox (160.75429pt too wide) detected at line 212
+\OT1/cmr/bx/n/10.95 I \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 ^^K[]I[] \OT1/cm
+r/m/n/10.95 + \OML/cmm/m/it/10.95 ^^K[]I[]\OT1/cmr/m/n/10.95 (1 \OMS/cmsy/m/n/1
+0.95 ^^@ \OML/cmm/m/it/10.95 ^^K[]\OT1/cmr/m/n/10.95 ) + \OML/cmm/m/it/10.95 ^^
+K[]I[]\OT1/cmr/m/n/10.95 (1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^K[]\O
+T1/cmr/m/n/10.95 )(1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^K[]\OT1/cmr/
+m/n/10.95 ) + [] [] [] + (1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^K[]\O
+T1/cmr/m/n/10.95 )(1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^K[]\OT1/cmr/
+m/n/10.95 ) [] (1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^K[]\OT1/cmr/m/n
+/10.95 )\OML/cmm/m/it/10.95 ^^K[]I[] \OT1/cmr/m/n/10.95 + (1 \OMS/cmsy/m/n/10.9
+5 ^^@ \OML/cmm/m/it/10.95 ^^K[]\OT1/cmr/m/n/10.95 )[]
+ []
+
+[7] [8]
+File: spring.PNG Graphic file (type bmp)
+<spring.PNG>
+ [9] [10]
+File: euler1.PNG Graphic file (type bmp)
+<euler1.PNG>
+File: euler2.PNG Graphic file (type bmp)
+<euler2.PNG>
+ [11]
+Overfull \hbox (28.53593pt too wide) in paragraph at lines 344--346
+$\JY1/mc/m/n/10.95 この速度の求め方はオイラー法と同じ方法を用いることが出来る．
+ これを \OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/
+m/n/10.95 ) \JY1/mc/m/n/10.95 に加えることで [] を
+ []
+
+File: euler3.PNG Graphic file (type bmp)
+<euler3.PNG>
+File: euler4.PNG Graphic file (type bmp)
+<euler4.PNG>
+[12] [13]
+第 3 章
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 403.
+
+(c:/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 403.
+ [14
+
+]
+第 4 章
+
+LaTeX Warning: Reference `fig:sample' on page 15 undefined on input line 424.
+
+
+LaTeX Warning: Reference `fig:sample' on page 15 undefined on input line 425.
+
+[15
+
+]
+第 5 章
+[16
+
+] [17] (./thesis_miyusakaguchi.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1833 strings out of 493643
+ 22074 string characters out of 6151777
+ 84650 words of memory out of 5000000
+ 5383 multiletter control sequences out of 15000+600000
+ 22808 words of font info for 91 fonts, out of 8000000 for 9000
+ 929 hyphenation exceptions out of 8191
+ 27i,8n,26p,934b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on thesis_miyusakaguchi.dvi (20 pages, 57968 bytes).
