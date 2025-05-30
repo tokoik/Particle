@@ -1063,3 +1063,184 @@ Object::~Object()
 ```
 
 ## [ステップ 07](https://github.com/tokoik/particle/tree/step07)
+
+## 8. 描画処理
+
+### 8.1 main.cpp への組み込み
+
+これまでに作成したシェーダのプログラムオブジェクト作成関数 `loadProgram()` や `Object` 構造体を、main.cpp で使えるようにします。shader.cpp で定義した関数 `loadProgram()` を main.cpp で使用するために、その宣言を格納した shader.h を `#include` します。また、図形のデータを保持する `Object` 構造体を使用するために、Object.h を `#include` します。図形は 10,000 個の点（粒子群）とし、その初期値を乱数で与えるために random も `#include` します。
+
+このプログラムでは、GLM の `glm::vec4` や `glm::mat4` のようなデータ型の変数などからデータが格納されている場所のポインタを取り出す `glm::value_ptr()` を使うので、それが宣言されている GLM/gtc/type_ptr.hpp を `#include` します。また、平行移動の変換行列を求める `glm::translate()` やビュー（視野）変換行列を作るのに便利な `glm::lookAt()`、透視投影変換行列を作るのに便利な `glm::perspective()` などが宣言されている GLM/gtc/matrix_transform.hpp も `#include` します。
+
+```cpp
+// Windows の OpenGL ライブラリをリンクする
+#pragma comment(lib, "opengl32.lib")
+
+// ウィンドウ関連の処理
+#include "Window.h"
+
+// OpenGL のエラーチェック
+#include "errorcheck.h"
+
+// シェーダの読み込み処理
+#include "shader.h"
+
+// 図形関連の処理
+#include "Object.h"
+
+// 粒子数
+const auto PARTICLE_COUNT{ 10000 };
+
+// 乱数
+#include <random>
+
+// GLM 関連
+#include <GLM/gtc/type_ptr.hpp>
+#include <GLM/gtc/matrix_transform.hpp>
+
+// 標準ライブラリ
+#include <iostream>
+```
+
+### 8.2 プログラムオブジェクトの作成
+
+GLFW の初期化が完了して OpenGL の新しい機能が使えるようになったら、シェーダのプログラムオブジェクトを作成します。プログラムオブジェクトが作成できなかったことを考えて、プログラムオブジェクトの名前 `program` が 0 でないことを確認した方が良いですね。そのあと、実行時に値を設定する必要がある変換行列の `uniform` 変数 `mc` の場所を取得しておきます。
+
+```cpp
+///
+/// メインプログラム
+///
+/// @return プログラムが正常に終了した場合は 0
+///
+auto main() -> int
+{
+  //
+  // 中略
+  //
+
+  // GLEW の初期化時にすべての API のエントリポイントを見つけるようにして
+  glewExperimental = GL_TRUE;
+
+  // GLEW を初期化する
+  if (glewInit() != GLEW_OK)
+  {
+    // GLEW の初期化に失敗したのでエラーメッセージを出して
+    std::cerr << "Can't initialize GLEW" << std::endl;
+
+    // 終了する
+    return EXIT_FAILURE;
+  }
+
+  // プログラムオブジェクトを作成する
+  const auto program{ loadProgram("point.vert", "point.frag") };
+
+  // プログラムオブジェクトが作成できなかったら
+  if (program == 0)
+  {
+    // エラーメッセージを出して
+    std::cerr << "Can't create program object." << std::endl;
+
+    // 終了する
+    return EXIT_FAILURE;
+  }
+
+  // uniform 変数 mc の場所を取得する
+  const auto mcLoc{ glGetUniformLocation(program, "mc") };
+```
+
+### 8.3 図形の作成
+
+図形は `Object` 構造体の変数を宣言することで作成します。コンストラクタの引数は頂点バッファオブジェクトとして確保する GPU 上のメモリのサイズです。この頂点バッファオブジェクトをメインメモリにマップし、`glm::vec3` 型の配列とみなして、一つ一つの要素に ±1 の乱数を格納します。
+
+```cpp
+  // 図形を作成する
+  Object object{ sizeof(glm::vec3) * PARTICLE_COUNT };
+
+  // 乱数生成器を初期化する
+  std::random_device seed_gen;
+  std::mt19937 engine(seed_gen());
+
+  // [-1.0f, 1.0f) の範囲の一様乱数の生成器を用意する
+  std::uniform_real_distribution<GLfloat> dist(-1.0f, 1.0f);
+
+  // 粒子の初期位置を設定する
+  glBindBuffer(GL_ARRAY_BUFFER, object.vbo);
+  const auto position{ static_cast<glm::vec3*>(glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY)) };
+  for (auto i{ 0 }; i < PARTICLE_COUNT; ++i)
+  {
+    // ランダムな位置を設定する
+    position[i] = { dist(engine), dist(engine), dist(engine) };
+  }
+  glUnmapBuffer(GL_ARRAY_BUFFER);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+```
+
+### 8.4 描画ループの開始
+
+ウィンドウの背景色を指定して、描画ループを開始します。`Window` クラスのインスタンス `window` を論理コンテキストで評価して、描画ループの継続条件とします。また、ループの最初でウィンドウのカラーバッファとデプスバッファを消去します。
+
+```cpp
+  // 背景色を指定する
+  glClearColor(0.2f, 0.3f, 0.4f, 0.0f);
+
+  // ウィンドウが開いている間繰り返す
+  while (window)
+  {
+    // ウィンドウを消去する
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+```
+
+### 8.5 プログラムオブジェクトの指定
+
+描画に使用するシェーダのプログラムオブジェクトを指定します。また、現在のウィンドウのアスペクト比を使って投影 (プロジェクション) 変換行列 `projection` を求め、それに視野変換行列 `view` を乗じたものを、このプログラムオブジェクトの `uniform` 変数 `mc` に設定します。投影変換の画角は 60°、図形の描画範囲は -3±1 なので、更に ±1 の余裕を持たせて near = 1、far = 5 に設定します。
+
+```cpp
+  // 背景色を指定する
+  glClearColor(0.2f, 0.3f, 0.4f, 0.0f);
+
+  // ウィンドウが開いている間繰り返す
+  while (window)
+  {
+    // ウィンドウを消去する
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // プログラムオブジェクトを指定する
+    glUseProgram(program);
+
+    // ビュー変換行列を設定する
+    const auto view{ glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f)) };
+
+    // 投影変換行列を設定する
+    const auto projection{ glm::perspective(glm::radians(60.0f), window.getAspect(), 1.0f, 5.0f) };
+
+    // uniform 変数 mc に値を設定する
+    glUniformMatrix4fv(mcLoc, 1, GL_FALSE, glm::value_ptr(projection * view));
+```
+
+### 8.6 図形の描画
+
+描画する図形の頂点配列オブジェクトを指定して、点で描画します。
+
+```cpp
+    // 図形を指定する
+    glBindVertexArray(object.vao);
+
+    // 図形を描画する
+    glDrawArrays(GL_POINTS, 0, PARTICLE_COUNT);
+
+    // OpenGL のエラーが発生していないかチェックする
+    errorcheck();
+
+    // カラーバッファを入れ替えてイベントを取り出す
+    window.swapBuffers();
+  }
+}
+```
+
+### 8.8 実行結果
+
+実行すると、こんな感じになります。
+
+![実行結果](images/fig19.png)
+
+## [ステップ 08](https://github.com/tokoik/particle/tree/step08)
