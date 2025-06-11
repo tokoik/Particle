@@ -80,6 +80,39 @@ auto main() -> int
     return EXIT_FAILURE;
   }
 
+#if defined(IMGUI_VERSION)
+  // ImGui のバージョンをチェックする
+  IMGUI_CHECKVERSION();
+
+  // ImGui のコンテキストを作成する
+  ImGui::CreateContext();
+
+  // ImGui のバックエンドに OpenGL / GLFW を使う
+  ImGui_ImplGlfw_InitForOpenGL(window.get(), true);
+  ImGui_ImplOpenGL3_Init();
+
+  // ImGui のスタイルを設定する
+  auto& io{ ImGui::GetIO() };
+  io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+  io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+  //ImGui::StyleColorsDark();
+  //ImGui::StyleColorsClassic();
+
+  // 日本語を表示できるメニューフォントを読み込む
+  if (!io.Fonts->AddFontFromFileTTF("ImGui/Mplus1-Regular.ttf", 18,
+    nullptr, io.Fonts->GetGlyphRangesJapanese()))
+  {
+    // GLEW の初期化に失敗したのでエラーメッセージを出して
+    std::cerr << "Can't load menu font." << std::endl;
+
+    // 終了する
+    return EXIT_FAILURE;
+  }
+
+  // メニューを表示するなら true
+  bool showMenu{ true };
+#endif
+
   // プログラムオブジェクトを作成する
   const auto program{ loadProgram("point.vert", "point.frag") };
 
@@ -123,6 +156,21 @@ auto main() -> int
   // ウィンドウが開いている間繰り返す
   while (window)
   {
+#if defined(IMGUI_VERSION)
+    // メニューを表示するなら
+    if (showMenu)
+    {
+      // メニューを表示する
+      ImGui::Begin("Control panel", &showMenu);
+      ImGui::End();
+    }
+    else
+    {
+      // スペースをタイプしたらメニューを表示する
+      showMenu = glfwGetKey(window.get(), GLFW_KEY_SPACE) != GLFW_RELEASE;
+    }
+#endif
+
     // 更新処理を行う
     window.update();
 
@@ -156,4 +204,13 @@ auto main() -> int
     // カラーバッファを入れ替えてイベントを取り出す
     window.swapBuffers();
   }
+
+#if defined(IMGUI_VERSION)
+  // ImGui のバックエンドをシャットダウンする
+  ImGui_ImplGlfw_Shutdown();
+  ImGui_ImplOpenGL3_Shutdown();
+
+  // ImGui のコンテキストを破棄する
+  ImGui::DestroyContext();
+#endif
 }
