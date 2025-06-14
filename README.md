@@ -1672,3 +1672,85 @@ class Window
 ```
 
 ## [ステップ 10](https://github.com/tokoik/particle/tree/step10)
+
+## 11. コンピュートシェーダの読み取り処理
+
+GPU に汎用の数値計算をさせる、いわゆる GPGPU (General Purpose GPU) を行うには、バーテックスシェーダで計算をして、ラスタライザを起動させずに Transform Feedback により out 変数から直接計算結果を取り出す方法や、フラグメントシェーダの出力をフレームバッファオブジェクトにするなど、いくつかの方法があります。コンピュートシェーダは、それらより汎用で、かつ GPU の並列性を活用できるプログラミング機能を提供します。
+
+詳しくは [床井研究室 - 粒子のレンダリング (2) ポイントの移動](https://marina.sys.wakayama-u.ac.jp/~tokoi/?date=20181018) や [床井研究室 - セパラブルフィルタ](https://marina.sys.wakayama-u.ac.jp/~tokoi/?date=20230604) あたりも参考にしてください。ここでは以前に作成した shader.cpp と shader.h に、コンピュートシェーダを作成する関数を追加します。
+
+## 11.1 shader.cpp の修正
+
+shader.cpp を開き、以下の内容を追加します。コンピュートシェーダは、単独でコンパイル・リンクします。
+
+```cpp
+///
+/// コンピュートシェーダのソースプログラムの文字列を読み込んでプログラムオブジェクトを作成する
+///
+/// @param[in] csrc コンピュートシェーダのソースプログラムの文字列
+/// @param[in] cmsg コンピュートシェーダのコンパイル時のメッセージに追加する文字列
+/// @return プログラムオブジェクトのプログラム名、作成できなければ 0
+///
+auto createCompute(const std::string& csrc, const std::string& cmsg) -> GLuint
+{
+  // 空のプログラムオブジェクトを作成する
+  const auto program{ glCreateProgram() };
+
+  // コンピュートシェーダの作成と組み込みに成功したら
+  if (createShader(program, csrc, cmsg, GL_COMPUTE_SHADER))
+  {
+    // プログラムオブジェクトをリンクして
+    glLinkProgram(program);
+
+    // エラーがなければプログラムオブジェクトを返す
+    if (printProgramInfoLog(program)) return program;
+  }
+
+  // エラーのときはプログラムオブジェクトを削除して 0 を返す
+  glDeleteProgram(program);
+  return 0;
+}
+
+///
+/// コンピュートシェーダのソースファイルを読み込んでプログラムオブジェクトを作成する
+///
+/// @param[in] comp コンピュートシェーダのソースファイル名
+/// @return プログラムオブジェクトのプログラム名、作成できなければ 0
+///
+auto loadCompute(const std::string& comp) -> GLuint
+{
+  // コンピュートシェーダのソースファイルを読み込んで
+  std::string csrc{ readShaderSource(comp) };
+
+  // ソースファイルが読めたらプログラムオブジェクトを作成する
+  if (!csrc.empty()) return createCompute(csrc, comp);
+
+  // ソースファイルが読めなかったので 0 を返す
+  return 0;
+}
+```
+
+### 11.2 shader.h の修正
+
+shader.h を開き、以下の内容を追加します。
+
+```cpp
+///
+/// コンピュートシェーダのソースプログラムの文字列を読み込んでプログラムオブジェクトを作成する
+///
+/// @param[in] csrc コンピュートシェーダのソースプログラムの文字列
+/// @param[in] cmsg コンピュートシェーダのコンパイル時のメッセージに追加する文字列
+/// @return プログラムオブジェクトのプログラム名、作成できなければ 0
+///
+extern auto createCompute(const std::string& csrc, const std::string& cmsg) -> GLuint;
+
+///
+/// コンピュートシェーダのソースファイルを読み込んでプログラムオブジェクトを作成する
+///
+/// @param[in] comp コンピュートシェーダのソースファイル名
+/// @return プログラムオブジェクトのプログラム名、作成できなければ 0
+///
+extern auto loadCompute(const std::string& comp) -> GLuint;
+```
+
+## [ステップ 11](https://github.com/tokoik/particle/tree/step11)
